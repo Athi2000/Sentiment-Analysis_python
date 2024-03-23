@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Summarizer</title>
+</head>
+<body>
+    <h1>Personalized Summarizer</h1>
+    
+    <form method="post" action="/summarize">
+        <label for="article">Article:</label>
+        <textarea name="article" id="article" rows="4" cols="50" required></textarea>
+
+        <label for="summary_length">Summary Length:</label>
+        <input type="number" name="summary_length" id="summary_length" required>
+
+        <label for="style">Summary Style:</label>
+        <select name="style" id="style" required>
+            <option value="objective">Objective</option>
+            <option value="factual">Factual</option>
+            <option value="humorous">Humorous</option>
+        </select>
+
+        <input type="submit" value="Summarize">
+    </form>
+
+    {% if article %}
+    <h2>Article:</h2>
+    <p>{{ article }}</p>
+
+    {% if personalized_summary %}
+    <h2>Personalized Summary:</h2>
+    <p>{{ personalized_summary }}</p>
+    {% endif %}
+    {% endif %}
+</body>
+</html>
